@@ -1,7 +1,9 @@
 class MinStack(object):
-
+    #doing it now using two stack method
     def __init__(self):
         self.stack = []
+        self.min_stack = []
+
 
     def push(self, val):
         """
@@ -10,15 +12,19 @@ class MinStack(object):
         """
         self.stack.append(val)
 
+        if not self.min_stack or val <= self.min_stack[-1]:
+            self.min_stack.append(val)
+
 
     def pop(self):
         """
         :rtype: None
         """
-        if len(self.stack) <= 0:
-            return 'Cannot POP from an empty list'
-        else:
+        if self.stack:
+            if self.stack[-1] == self.min_stack[-1]:
+                self.min_stack.pop()
             self.stack.pop()
+
         
     def top(self):
         """
@@ -30,7 +36,7 @@ class MinStack(object):
         """
         :rtype: int
         """
-        return min(self.stack)
+        return  self.min_stack[-1]
 
 
 # Your MinStack object will be instantiated and called as such:
