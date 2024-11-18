@@ -1,42 +1,32 @@
 class MinStack(object):
-    #doing it now using two stack method
+    #doing it now using one stack and tuples
     def __init__(self):
         self.stack = []
-        self.min_stack = []
-
 
     def push(self, val):
-        """
-        :type val: int
-        :rtype: None
-        """
-        self.stack.append(val)
-
-        if not self.min_stack or val <= self.min_stack[-1]:
-            self.min_stack.append(val)
-
+        if self.stack and self.stack[-1][1] < val:
+            self.stack.append((val, self.stack[-1][1]))
+        else:
+            self.stack.append((val, val))
 
     def pop(self):
         """
         :rtype: None
         """
-        if self.stack:
-            if self.stack[-1] == self.min_stack[-1]:
-                self.min_stack.pop()
-            self.stack.pop()
+        self.stack.pop()
 
         
     def top(self):
         """
         :rtype: int
         """
-        return self.stack[-1]
+        return self.stack[-1][0]
 
     def getMin(self):
         """
         :rtype: int
         """
-        return  self.min_stack[-1]
+        return  self.stack[-1][1]
 
 
 # Your MinStack object will be instantiated and called as such:
