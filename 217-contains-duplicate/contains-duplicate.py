@@ -4,7 +4,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-
-        #dicts = {i:nums.count(i) for i in nums}
         
-        return False if len(nums) == len(set(nums)) else True
+        nums.sort()
+        
+        flip = False
+
+        for i in range(len(nums)-1):
+            if nums[i] == nums[i+1]:
+                flip = True
+                break;
+        
+        return flip
+        
