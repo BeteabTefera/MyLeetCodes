@@ -1,11 +1,6 @@
-class Solution(object):
-    def getConcatenation(self, nums):
-        """
-        U: 
-            - Need to create an array outpu
-            ex: Nums = [1,2,1]
+class Solution:
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        for i in range(len(nums)):
+            nums.append(nums[i])
 
-        """
-        nums.extend(nums)
         return nums
-        
