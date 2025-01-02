@@ -6,9 +6,6 @@ class Solution(object):
             ex: Nums = [1,2,1]
 
         """
-        nums_1 = []
-        for i in (nums):
-            nums_1.append(i)
-
-        return nums + nums_1
+        nums.extend(nums)
+        return nums
         
